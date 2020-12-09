@@ -1,0 +1,22 @@
+{
+	"biceps": {
+		"mancuernas": {
+			"ExerciseID": "biceps1",
+			"List of muscles": ["biceps", "antebrazos", "hombros"]
+		},
+		"Peso muerto": {
+			"ExerciseID": "biceps2",
+			"List of muscles": ["biceps", "antebrazos", "hombros"]
+		}
+	},
+	"hombro": {
+		"mancuernas": {
+			"ExerciseID": "biceps1",
+			"List of muscles": ["biceps", "antebrazos", "hombros"]
+		},
+		"Peso muerto": {
+			"ExerciseID": "biceps2",
+			"List of muscles": ["biceps", "antebrazos", "hombros"]
+		}
+	}
+}
