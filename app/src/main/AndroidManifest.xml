@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DGym">
         <activity
+            android:name=".MuscularGroups"
+            android:label="@string/title_activity_muscular_groups"
+            android:theme="@style/Theme.DGym.NoActionBar"></activity>
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/Theme.DGym.NoActionBar" />
+        <activity
             android:name=".search_ecercises"
             android:label="@string/title_activity_search_ecercises"
-            android:theme="@style/Theme.DGym.NoActionBar"></activity>
+            android:theme="@style/Theme.DGym.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

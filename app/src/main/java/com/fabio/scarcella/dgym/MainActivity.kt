@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun exercisesActivity(){
-        val intent = Intent(this, search_ecercises::class.java)
+        val intent = Intent(this, MuscularGroups::class.java)
         startActivity(intent)
     }
 

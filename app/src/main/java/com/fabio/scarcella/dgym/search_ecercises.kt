@@ -1,6 +1,7 @@
 package com.fabio.scarcella.dgym
 
 import android.app.ActionBar
+import android.content.res.AssetManager
 import android.os.Bundle
 import android.util.Log
 import android.util.Log.ASSERT
@@ -33,46 +34,54 @@ class search_ecercises : AppCompatActivity() {
                 .setAction("Action", null).show()
         }*/
 
-        getExercises()
+        val b : Bundle? = intent.extras
+        val exercise = b?.getString("class")
+
+        if (exercise != null) {
+            getExercises(exercise)
+        }
+    }
+
+    fun getExercises(path: String){
+        val assetsManager: AssetManager = getAssets()
+        var files = listOf<String>()
+
+        when(path) {
+            "Biceps" -> {
+                val listFolders = ListFolders()
+                files = listFolders.biceps
+            }
+
+            "Triceps" -> {
+
+            }
+
+            "Forearm" -> {
+
+            }
+
+            "Trapezium" -> {
+
+            }
+        }
 
         var i = 0
-        for(i in 0..19){
-            createNecessaryElements()
+        for(element in files){
+            val file = element
+            if(file.isEmpty()){
+                continue
+            }
+            val gson = Gson()
+            val inputString = applicationContext.assets.open("ExercisesInfo/$path/$file").bufferedReader().use {
+                it.readText()
+            }
+            val jsonString = gson.fromJson(inputString, ExercisesInfo::class.java)
+
+            createNecessaryElements(jsonString.name.toString())
         }
     }
 
-    fun onCreate(savedInstanceState: Bundle?, section: String?) {
-        this.section = section
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_ecercises)
-        setSupportActionBar(findViewById(R.id.toolbar))
-        findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = section
-
-        getExercises()
-
-        var i = 0
-        for(i in 0..19){
-            createNecessaryElements()
-        }
-    }
-
-    fun getExercises(){
-        var gson = Gson()
-        //val p ="\\app\\src\\main\\assets\\ExercisesInfo\\Biceps\\biceps1.json"
-        //val bufferedReader: BufferedReader = File(p).bufferedReader()
-        //val inputString = bufferedReader.use { it.readText() }
-        val inputString = applicationContext.assets.open("ExercisesInfo/Biceps/biceps1.json").bufferedReader().use {
-            it.readText()
-        }
-        var jsonString = gson.fromJson(inputString, ExercisesInfo::class.java)
-
-        var stringBuilder = StringBuilder("JSONString Details\n----------")
-        Log.d("Kotlin", jsonString.name.toString())
-        Log.d("Kotlin", jsonString.Observations.toString())
-    }
-
-    fun createNecessaryElements(){
+    fun createNecessaryElements(name: String){
         val linearLayout: LinearLayout = LinearLayout(this)
         linearLayout.orientation = LinearLayout.HORIZONTAL
 
@@ -82,7 +91,7 @@ class search_ecercises : AppCompatActivity() {
 
         val btnGo: Button = Button(this)
         btnGo.textSize = 12f
-        btnGo.text = "Hello world"
+        btnGo.text = name
         btnGo.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
 
         layoutVertical.addView(linearLayout)
