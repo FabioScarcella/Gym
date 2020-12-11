@@ -1,6 +1,7 @@
 package com.fabio.scarcella.dgym
 
 import android.app.ActionBar
+import android.content.Intent
 import android.content.res.AssetManager
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -77,11 +79,11 @@ class search_ecercises : AppCompatActivity() {
             }
             val jsonString = gson.fromJson(inputString, ExercisesInfo::class.java)
 
-            createNecessaryElements(jsonString.name.toString())
+            createNecessaryElements(jsonString.name.toString(), file)
         }
     }
 
-    fun createNecessaryElements(name: String){
+    fun createNecessaryElements(name: String, fileName: String){
         val linearLayout: LinearLayout = LinearLayout(this)
         linearLayout.orientation = LinearLayout.HORIZONTAL
 
@@ -93,6 +95,11 @@ class search_ecercises : AppCompatActivity() {
         btnGo.textSize = 12f
         btnGo.text = name
         btnGo.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        btnGo.setOnClickListener {
+            Toast.makeText(this, fileName, Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SingleExercise::class.java)
+            startActivity(intent)
+        }
 
         layoutVertical.addView(linearLayout)
         linearLayout.addView(imgView)

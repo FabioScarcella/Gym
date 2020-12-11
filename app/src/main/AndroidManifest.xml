@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DGym">
+        <activity android:name=".SingleExercise"></activity>
         <activity
             android:name=".MuscularGroups"
             android:label="@string/title_activity_muscular_groups"
-            android:theme="@style/Theme.DGym.NoActionBar"></activity>
+            android:theme="@style/Theme.DGym.NoActionBar" />
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
