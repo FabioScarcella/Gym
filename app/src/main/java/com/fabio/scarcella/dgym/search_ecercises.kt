@@ -79,11 +79,11 @@ class search_ecercises : AppCompatActivity() {
             }
             val jsonString = gson.fromJson(inputString, ExercisesInfo::class.java)
 
-            createNecessaryElements(jsonString.name.toString(), file)
+            createNecessaryElements(jsonString.name.toString(), file, jsonString)
         }
     }
 
-    fun createNecessaryElements(name: String, fileName: String){
+    fun createNecessaryElements(name: String, fileName: String, jsonString : ExercisesInfo){
         val linearLayout: LinearLayout = LinearLayout(this)
         linearLayout.orientation = LinearLayout.HORIZONTAL
 
@@ -96,8 +96,11 @@ class search_ecercises : AppCompatActivity() {
         btnGo.text = name
         btnGo.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         btnGo.setOnClickListener {
-            Toast.makeText(this, fileName, Toast.LENGTH_SHORT).show()
             val intent = Intent(this, SingleExercise::class.java)
+            intent.putExtra("name", jsonString.name)
+            intent.putExtra("observations", jsonString.Observations)
+            intent.putExtra("textInformation", jsonString.textInformation)
+            intent.putExtra("videoURL", jsonString.videoURL)
             startActivity(intent)
         }
 
