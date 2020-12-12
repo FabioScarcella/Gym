@@ -88,8 +88,8 @@ class search_ecercises : AppCompatActivity() {
         linearLayout.orientation = LinearLayout.HORIZONTAL
 
         val imgView : ImageView = ImageView(this)
-        imgView.setImageResource(R.drawable.ic_launcher_foreground)
-        imgView.setLayoutParams(ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+        imgView.setImageResource(resources.getIdentifier(jsonString.videoURL, "drawable", packageName))
+        imgView.setLayoutParams(ViewGroup.LayoutParams(200,300))
 
         val btnGo: Button = Button(this)
         btnGo.textSize = 12f

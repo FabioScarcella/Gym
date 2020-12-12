@@ -1,0 +1,48 @@
+[
+	{
+		"name": "myRoutine 1",
+		"exercises": [
+			"biceps1",
+			"biceps2",
+			"forearm1"
+		],
+		"reps": [
+			1,
+			2,
+			1
+		],
+		"weight": [
+			15,
+			5,
+			10
+		],
+		"series": [
+			3,
+			3,
+			3
+		]
+	},
+	{
+		"name": "myRoutine 2",
+		"exercises": [
+			"biceps1",
+			"biceps2",
+			"forearm1"
+		],
+		"reps": [
+			1,
+			2,
+			1
+		],
+		"weight": [
+			15,
+			5,
+			10
+		],
+		"series": [
+			3,
+			3,
+			3
+		]
+	}
+]
